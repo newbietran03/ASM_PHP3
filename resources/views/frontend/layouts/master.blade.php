@@ -90,7 +90,7 @@
                                         <li><a href="#"><i class="fab fa-instagram"></i></a></li>
                                         <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
                                         @guest
-                                            <li><a class="custom-link" href="{{ route('login') }}">LoginADC</a></li>
+                                            <li><a class="custom-link" href="{{ route('login') }}">Login</a></li>
                                             <li><a class="custom-link" href="{{ route('register') }}">Register</a></li>
                                         @else
                                             <li>Welcome, {{ Auth::user()->name }}</li>

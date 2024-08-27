@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="{{ asset('fontend/css/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('fontend/css/nice-select.css') }}">
     <link rel="stylesheet" href="{{ asset('fontend/css/style.css') }}">
+
+
     <style>
         .custom-link {
             color: #9c0303;
@@ -34,8 +36,8 @@
         }
 
         .custom-link:hover {
-            background-color: #0056b3;
-            color: #940202;
+            background-color: #ac0609;
+            color: #880000;
         }
 
         .header-social li {
@@ -56,16 +58,16 @@
 <body>
 
     <!-- Preloader Start -->
-    <!-- <div id="preloader-active">
+    {{-- <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img src="{{ asset('fontend/img/logo/logo.p') }}ng" alt="">
+                    <img src="fontend/img/logo/logo.png" alt="">
                 </div>
             </div>
         </div>
-    </div> -->
+    </div> --}}
     <!-- Preloader Start -->
 
     <header>
@@ -78,27 +80,38 @@
                             <div class="row d-flex justify-content-between align-items-center">
                                 <div class="header-info-left">
                                     <ul>
-                                        <li><img src="{{ asset('fontend/img/icon/header_icon1.png') }}"
-                                                alt="">34ºc, Sunny</li>
-                                        <li><img src="{{ asset('fontend/img/icon/header_icon1.png') }}"
-                                                alt="">Tuesday, 18th June, 2024</li>
+                                        <!-- Hiển thị thời tiết -->
+                                        {{-- <li><img src="{{ asset('fontend/img/icon/header_icon1.png') }}" alt="">
+                                            {{ now()->format('dºc, Sunny') }}</li> --}}
+                                            
+                                        <!-- Hiển thị ngày hiện tại -->
+                                        <li><img src="{{ asset('fontend/img/icon/header_icon1.png') }}" alt="">
+                                            {{ now()->format('l, jS F, Y') }}</li>
                                     </ul>
                                 </div>
+                                
                                 <div class="header-info-right">
                                     <ul class="header-social">
                                         <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                                         <li><a href="#"><i class="fab fa-instagram"></i></a></li>
                                         <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
                                         @guest
-                                            <li><a class="custom-link" href="{{ route('login') }}">Login</a></li>
-                                            <li><a class="custom-link" href="{{ route('register') }}">Register</a></li>
+                                            <li>
+                                                <a class="custom-link" href="{{ route('login') }}">
+                                                    <i class="fas fa-user"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="custom-link" href="{{ route('register') }}">
+                                                    <i class="fas fa-user-plus"></i>
+                                                </a>
+                                            </li>
                                         @else
                                             <li>Welcome, {{ Auth::user()->name }}</li>
                                             <li>
                                                 <a class="custom-link" href="{{ route('logout') }}"
-                                                    onclick="event.preventDefault();
-                                                             document.getElementById('logout-form').submit();">
-                                                    Logout
+                                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                    <i class="fas fa-sign-out-alt"></i>
                                                 </a>
                                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                                     style="display: none;">
@@ -108,6 +121,7 @@
                                         @endguest
                                     </ul>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -118,10 +132,11 @@
                             <div class="col-xl-10 col-lg-10 col-md-12 header-flex">
                                 <!-- sticky -->
                                 <div class="sticky-logo">
-                                    <a href="{{ url('/') }}"><img src="{{ asset('fontend/img/logo/logo.png') }}"
+                                    <a href="{{ url('/') }}"><img src="fontend/img/logo/logo.png"
                                             alt=""></a>
                                 </div>
-                                <!-- Main-menu -->
+                                <!-- Main-menu chon, sxep,ah = 1 --> 
+                                
                                 <div class="main-menu d-none d-md-block">
                                     <nav>
                                         <ul id="navigation">
@@ -133,7 +148,6 @@
                                                     ->orderBy('id', 'asc')
                                                     ->where('anHien', 1)
                                                     ->get();
-
                                             @endphp
 
                                             <!-- Dropdown cho Category -->
@@ -154,7 +168,7 @@
                                             </li>
 
                                             <li><a href="{{ url('/about') }}">About</a></li>
-                                            <li><a href="{{ url('/laterNews') }}">Latest News</a></li>
+
                                             <li><a href="{{ url('/contact') }}">Contact</a></li>
                                             <li><a href="#">Pages</a>
                                                 <ul class="submenu">
@@ -171,12 +185,14 @@
                             <div class="col-xl-2 col-lg-2 col-md-4">
                                 <div class="header-right-btn f-right d-none d-lg-block">
                                     <i class="fas fa-search special-tag"></i>
+
                                     <div class="search-box">
                                         <form action="#">
                                             <input type="text" placeholder="Search">
 
                                         </form>
                                     </div>
+
                                 </div>
                             </div>
                             <!-- Mobile Menu -->

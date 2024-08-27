@@ -16,15 +16,15 @@ class Admin
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle($request, Closure $next)
-     {
-         if (Auth::check()) {
-             if (Auth::user()->level == 1) {
-                 return $next($request);
-             } else {
-                 return redirect('/404')->with('error', 'Bạn không có quyền truy cập trang quản trị viên.');
-             }
-         }
-     
-         return redirect('/login');
-     }     
+    {
+        if (Auth::check()) {
+            if (Auth::user()->level == 1) {
+                return $next($request);
+            } else {
+                return redirect('/404')->with('error', 'Bạn không có quyền truy cập trang quản trị viên.');
+            }
+        }
+
+        return redirect('/login');
+    }
 }

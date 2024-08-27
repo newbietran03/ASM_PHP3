@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\QuanTriLoaiTinController;
 use App\Http\Controllers\QuanTriTinController;
@@ -39,7 +40,7 @@ Route::get('/test-email', function () {
     return 'Email sent';
 });
 //News
-Route::get('/', [IndexController::class, 'index'])->name('home'); 
+Route::get('/', [IndexController::class, 'index'])->name('home');
 Route::get('/category/{slug}', [NewsController::class, 'category'])->name('category');
 Route::get('/single-post/{slug}', [NewsController::class, 'single_post']);
 Route::get('/about', [AboutController::class, 'index'])->name('about');
@@ -47,6 +48,8 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact.index
 Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
 // Route::get('/laterNews', [laterNewsController::class, 'index'])->name('laterNews');
 Route::get('/blog', [BlogController::class, 'index'])->name('laterNews');
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::post('/blog/comment', [BlogController::class, 'comment'])->name('blog.comment');
 // Route cho trang tìm kiếm
 Route::get('/search', [TinController::class, 'search']);
 
@@ -56,6 +59,7 @@ Route::middleware('level')->group(function () {
     Route::get('admin', [AdminController::class, 'index'])->name('admin');
     Route::resource('admin/categories', QuanTriLoaiTinController::class);
     Route::resource('admin/news', QuanTriTinController::class);
+
     Route::resource('admin/users', QuanTriNguoiDungController::class);
     Route::resource('admin/comments', CommentController::class);
 });
@@ -66,6 +70,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
 
 // Route cho admin với prefix và middleware auth
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'Quantri']], function () {
@@ -79,10 +84,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'Quantri']], functio
     Route::get('/dsuser', [AdminController::class, 'dsuser'])->name('dsuser');
 });
 
-// Route::group(['prefix' => 'user'], function () {
-//     Route::get('/featured-news', [NewsController::class, 'featured']);
-//     Route::get('/latest-news', [NewsController::class, 'latest']);
-// });
+Route::group(['prefix' => 'user'], function () {
+    Route::get('/featured-news', [NewsController::class, 'featured']);
+    Route::get('/latest-news', [NewsController::class, 'latest']);
+});
 
 // Authentication routes
 // Route::get('/register', [AdminController::class, 'create'])->middleware('guest');
@@ -103,4 +108,4 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'Quantri']], functio
 // Route::get('/confirm-password', [ConfirmablePasswordController::class, 'show'])->middleware('auth');
 // Route::post('/confirm-password', [ConfirmablePasswordController::class, 'store'])->middleware('auth');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

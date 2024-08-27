@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -9,18 +8,34 @@ class Comment extends Model
 {
     use HasFactory;
 
-    // Các thuộc tính có thể được gán giá trị hàng loạt
-    protected $fillable = ['noiDung', 'id_user', 'id_news'];
+    // protected $fillable = [
+    //     'noiDung',
+    //     'id_user',
+    //     'id_new',
+    //     'name',
+    //     'avatar',
+    //     'level'
+    // ];
 
-    // Thiết lập mối quan hệ với model User
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'id_user');
-    }
+    // public function user()
+    // {
+    //     return $this->belongsTo(User::class, 'id_user');
+    // }
 
-    // Thiết lập mối quan hệ với model News
-    public function news()
-    {
-        return $this->belongsTo(News::class, 'id_user');
-    }
+    // public function news()
+    // {
+    //     return $this->belongsTo(News::class, 'id_new'); // Hoặc bảng bài viết khác
+    // }
+
+    // public function parent()
+    // {
+    //     return $this->belongsTo(Comment::class, 'parent_id');
+    // }
+
+    // public function replies()
+    // {
+    //     return $this->hasMany(Comment::class, 'parent_id');
+    // }
 }
+
+

@@ -14,13 +14,12 @@
     <link href="{{ asset('backend/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('backend/css/plugins/dataTables/datatables.min.css') }}" rel="stylesheet">
 
-
     <style>
         .ck-editor__editable_inline {
             min-height: 250px;
             max-height: 450px;
         }
-        </style>
+    </style>
 
 </head>
 
@@ -32,11 +31,14 @@
                 <ul class="nav metismenu" id="side-menu">
                     <li class="nav-header">
                         <div class="dropdown profile-element"> <span>
-                            <img alt="image" class="img-circle" src="{{ asset('backend/img/profile_small.jpg') }}" />
+                                <img alt="image" class="img-circle"
+                                    src="{{ asset('backend/img/profile_small.jpg') }}" />
                             </span>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">David Williams</strong>
-                                </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span> </a>
+                                <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">David
+                                            Williams</strong>
+                                    </span> <span class="text-muted text-xs block">Art Director <b
+                                            class="caret"></b></span> </span> </a>
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
                                 <li><a href="profile.html">Profile</a></li>
                                 <li><a href="contacts.html">Contacts</a></li>
@@ -55,38 +57,49 @@
                             <span class="nav-label">Trang Chủ</span>
                         </a>
                     </li>
-                    <li class="{{Request::is('admin/news') ? 'active' : ' '}}">
-                        <a href="{{route('news.index')}}"><i class="fa fa-th-large"></i> <span class="nav-label">Quản Lý Tin</span> <span class="fa arrow"></span></a>
+                    <li class="{{ Request::is('admin/news') ? 'active' : ' ' }}">
+                        <a href="{{ route('news.index') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Quản
+                                Lý Tin</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li class="{{ Request::is('admin/news') ? 'active' : '' }}"><a href="{{route('news.index')}}">Danh Sách Tin</a></li>
-                            <li  class="{{ Request::is('admin/news/create*') ? 'active' : '' }} "><a href="{{route('news.create')}}">Thêm Tin</a></li>
-                            
+                            <li class="{{ Request::is('admin/news') ? 'active' : '' }}"><a
+                                    href="{{ route('news.index') }}">Danh Sách Tin</a></li>
+                            <li class="{{ Request::is('admin/news/create*') ? 'active' : '' }} "><a
+                                    href="{{ route('news.create') }}">Thêm Tin</a></li>
+
                         </ul>
                     </li>
                     <li class="{{ Request::is('admin/categories*') ? 'active' : '' }}">
-                        <a href="{{route('categories.index')}}"><i class="fa fa-th-large"></i> <span class="nav-label">Quản Lý Loại Tin</span> <span class="fa arrow"></span></a>
+                        <a href="{{ route('categories.index') }}"><i class="fa fa-th-large"></i> <span
+                                class="nav-label">Quản Lý Loại Tin</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li class="{{ Request::is('admin/categories') ? 'active' : '' }}"><a href="{{route('categories.index')}}">Danh Sách Loại Tin</a></li>
-                            <li class="{{ Request::is('admin/categories/create*') ? 'active' : '' }}"><a href="{{route('categories.create')}}">Thêm Loại Tin</a></li>
-                            
+                            <li class="{{ Request::is('admin/categories') ? 'active' : '' }}"><a
+                                    href="{{ route('categories.index') }}">Danh Sách Loại Tin</a></li>
+                            <li class="{{ Request::is('admin/categories/create*') ? 'active' : '' }}"><a
+                                    href="{{ route('categories.create') }}">Thêm Loại Tin</a></li>
+
                         </ul>
                     </li>
                     <li class="{{ Request::is('admin/users*') ? 'active' : '' }}">
-                        <a href="{{ route('users.index') }}"><i class="fa fa-users"></i> <span class="nav-label">Quản Lý Người Dùng</span> <span class="fa arrow"></span></a>
+                        <a href="{{ route('users.index') }}"><i class="fa fa-users"></i> <span class="nav-label">Quản
+                                Lý Người Dùng</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li class="{{ Request::is('admin/users') ? 'active' : '' }}"><a href="{{ route('users.index') }}">Danh Sách Người Dùng</a></li>
-                            <li class="{{ Request::is('admin/users/create*') ? 'active' : '' }}"><a href="{{ route('users.create') }}">Thêm Người Dùng</a></li>
+                            <li class="{{ Request::is('admin/users') ? 'active' : '' }}"><a
+                                    href="{{ route('users.index') }}">Danh Sách Người Dùng</a></li>
+                            <li class="{{ Request::is('admin/users/create*') ? 'active' : '' }}"><a
+                                    href="{{ route('users.create') }}">Thêm Người Dùng</a></li>
                         </ul>
                     </li>
                     <li class="{{ Request::is('admin/comments*') ? 'active' : '' }}">
-                        <a href="{{ route('comments.index') }}"><i class="fa fa-comments"></i> <span class="nav-label">Quản Lý Bình Luận</span> <span class="fa arrow"></span></a>
+                        <a href="{{ route('comments.index') }}"><i class="fa fa-comments"></i> <span
+                                class="nav-label">Quản Lý Bình Luận</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li class="{{ Request::is('admin/comments') ? 'active' : '' }}"><a href="{{ route('comments.index') }}">Danh Sách Bình Luận</a></li>
-                            <li class="{{ Request::is('admin/comments/create*') ? 'active' : '' }}"><a href="{{ route('comments.create') }}">Thêm Bình Luận</a></li>
+                            <li class="{{ Request::is('admin/comments') ? 'active' : '' }}"><a
+                                    href="{{ route('comments.index') }}">Danh Sách Bình Luận</a></li>
+                            <li class="{{ Request::is('admin/comments/create*') ? 'active' : '' }}"><a
+                                    href="{{ route('comments.create') }}">Thêm Bình Luận</a></li>
                         </ul>
                     </li>
-                    
-                    
+
                 </ul>
             </div>
         </nav>
@@ -94,10 +107,12 @@
             <div class="row border-bottom">
                 <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
                     <div class="navbar-header">
-                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i
+                                class="fa fa-bars"></i> </a>
                         <form role="search" class="navbar-form-custom" action="search_results.html">
                             <div class="form-group">
-                                <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+                                <input type="text" placeholder="Search for something..." class="form-control"
+                                    name="top-search" id="top-search">
                             </div>
                         </form>
                     </div>
@@ -107,17 +122,19 @@
                         </li>
                         <li class="dropdown">
                             <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                                <i class="fa fa-envelope"></i>  <span class="label label-warning">16</span>
+                                <i class="fa fa-envelope"></i> <span class="label label-warning">16</span>
                             </a>
                             <ul class="dropdown-menu dropdown-messages">
                                 <li>
                                     <div class="dropdown-messages-box">
                                         <a href="profile.html" class="pull-left">
-                                            <img alt="image" class="img-circle" src="{{ asset('backend/img/a7.jpg') }}">
+                                            <img alt="image" class="img-circle"
+                                                src="{{ asset('backend/img/a7.jpg') }}">
                                         </a>
                                         <div>
                                             <small class="pull-right">46h ago</small>
-                                            <strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>. <br>
+                                            <strong>Mike Loreipsum</strong> started following <strong>Monica
+                                                Smith</strong>. <br>
                                             <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
                                         </div>
                                     </div>
@@ -126,11 +143,13 @@
                                 <li>
                                     <div class="dropdown-messages-box">
                                         <a href="profile.html" class="pull-left">
-                                            <img alt="image" class="img-circle" src="{{ asset('backend/img/a4.jpg') }}">
+                                            <img alt="image" class="img-circle"
+                                                src="{{ asset('backend/img/a4.jpg') }}">
                                         </a>
                                         <div>
                                             <small class="pull-right text-navy">5h ago</small>
-                                            <strong>Chris Johnatan Overtunk</strong> started following <strong>Monica Smith</strong>. <br>
+                                            <strong>Chris Johnatan Overtunk</strong> started following <strong>Monica
+                                                Smith</strong>. <br>
                                             <small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>
                                         </div>
                                     </div>
@@ -139,7 +158,8 @@
                                 <li>
                                     <div class="dropdown-messages-box">
                                         <a href="profile.html" class="pull-left">
-                                            <img alt="image" class="img-circle" src="{{ asset('backend/img/profile.jpg') }}">
+                                            <img alt="image" class="img-circle"
+                                                src="{{ asset('backend/img/profile.jpg') }}">
                                         </a>
                                         <div>
                                             <small class="pull-right">23h ago</small>
@@ -160,7 +180,7 @@
                         </li>
                         <li class="dropdown">
                             <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                                <i class="fa fa-bell"></i>  <span class="label label-primary">8</span>
+                                <i class="fa fa-bell"></i> <span class="label label-primary">8</span>
                             </a>
                             <ul class="dropdown-menu dropdown-alerts">
                                 <li>
@@ -205,7 +225,8 @@
                                 @csrf
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
-                                    <button type="submit" name="submit" class="btn btn-primary btn-sm"> <i class="fa fa-sign-out"></i>Logout</button>
+                                    <button type="submit" name="submit" class="btn btn-primary btn-sm"> <i
+                                            class="fa fa-sign-out"></i>Logout</button>
                                 </form>
                             </form>
                         </li>
@@ -218,7 +239,18 @@
                 </nav>
             </div>
             <div class="wrapper-content">
+                @if ($errors->any())
+                    <div class="m-3 alert alert-danger">
+                        <ul class="mb-0">
+                            @foreach ($errors->all() as $error)
+                                <li>Lỗi: {{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 @yield('content')
+
             </div>
             <div class="footer">
                 <div class="pull-right">
@@ -232,10 +264,10 @@
     </div>
 
     <!-- Mainly scripts -->
-    <script src="{{asset('backend/js/jquery-3.1.1.min.js') }}"></script>
-    <script src="{{asset('backend/js/bootstrap.min.js') }}"></script>
-    <script src="{{asset('backend/js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
-    <script src="{{asset('backend/js/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
+    <script src="{{ asset('backend/js/jquery-3.1.1.min.js') }}"></script>
+    <script src="{{ asset('backend/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('backend/js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
+    <script src="{{ asset('backend/js/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
     <script src="{{ asset('backend/js/jquery-3.1.1.min.js') }}"></script>
     <script src="{{ asset('backend/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('backend/js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
@@ -258,12 +290,11 @@
     <script src="{{ asset('backend/js/plugins/sparkline/jquery.sparkline.min.js') }}"></script>
     <script src="{{ asset('backend/js/demo/sparkline-demo.js') }}"></script>
 
-
-    <script src="{{asset('backend/js/plugins/dataTables/datatables.min.js') }}"></script>
+    <script src="{{ asset('backend/js/plugins/dataTables/datatables.min.js') }}"></script>
 
     <!-- Custom and plugin javascript -->
-    <script src="{{asset('backend/js/inspinia.js') }}"></script>
-    <script src="{{asset('backend/js/plugins/pace/pace.min.js') }}"></script>
+    <script src="{{ asset('backend/js/inspinia.js') }}"></script>
+    <script src="{{ asset('backend/js/plugins/pace/pace.min.js') }}"></script>
 
     <!-- include libraries(jQuery, bootstrap) -->
     {{-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"> --}}
@@ -272,141 +303,171 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/super-build/ckeditor.js"></script>
     <!-- Page-Level Scripts -->
     <script>
-        
-        
-   CKEDITOR.ClassicEditor.create(document.getElementById("Content"), {
-         toolbar: {
-            items: [
-               'heading', '|','findAndReplace', 'selectAll', '|',
-               'bold', 'italic', 'underline', 'subscript', 'superscript', 'removeFormat', '|',
-               'bulletedList', 'numberedList', '|','outdent', 'indent', '|',
-               '-',
-               'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', 'highlight', '|',
-               'alignment', '|',
-               'link', 'insertImage', 'insertTable', 'mediaEmbed', '|',
-                'horizontalLine', '|','sourceEditing'
-            ],
-            shouldNotGroupWhenFull: true
-         },
-         // Changing the language of the interface requires loading the language file using the <script> tag.
-         // language: 'es',
-         list: {
-            properties: {
-               styles: true,
-               startIndex: true,
-               reversed: true
-            }
-         },
-         // https://ckeditor.com/docs/ckeditor5/latest/features/headings.html#configuration
-         heading: {
-            options: [
-               { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
-               { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
-               { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' },
-               { model: 'heading3', view: 'h3', title: 'Heading 3', class: 'ck-heading_heading3' },
-               { model: 'heading4', view: 'h4', title: 'Heading 4', class: 'ck-heading_heading4' },
-               { model: 'heading5', view: 'h5', title: 'Heading 5', class: 'ck-heading_heading5' },
-               { model: 'heading6', view: 'h6', title: 'Heading 6', class: 'ck-heading_heading6' }
-            ]
-         },
-         // https://ckeditor.com/docs/ckeditor5/latest/features/editor-placeholder.html#using-the-editor-configuration
-         placeholder: 'Welcome to CKEditor 5!',
-         // https://ckeditor.com/docs/ckeditor5/latest/features/font.html#configuring-the-font-family-feature
-         fontFamily: {
-            options: [
-               'default',
-               'Arial, Helvetica, sans-serif',
-               'Courier New, Courier, monospace',
-               'Georgia, serif',
-               'Lucida Sans Unicode, Lucida Grande, sans-serif',
-               'Tahoma, Geneva, sans-serif',
-               'Times New Roman, Times, serif',
-               'Trebuchet MS, Helvetica, sans-serif',
-               'Verdana, Geneva, sans-serif'
-            ],
-            supportAllValues: true
-         },
-         // https://ckeditor.com/docs/ckeditor5/latest/features/font.html#configuring-the-font-size-feature
-         fontSize: {
-            options: [ 10, 12, 14, 'default', 18, 20, 22 ],
-            supportAllValues: true
-         },
-         // https://ckeditor.com/docs/ckeditor5/latest/features/general-html-support.html#enabling-all-html-features
-         htmlSupport: {
-            allow: [
-               {
-                     name: /.*/,
-                     attributes: true,
-                     classes: true,
-                     styles: true
-               }
-            ]
-         },
-         // Be careful with enabling previews
-         // https://ckeditor.com/docs/ckeditor5/latest/features/html-embed.html#content-previews
-         htmlEmbed: {
-            showPreviews: true
-         },
-         // https://ckeditor.com/docs/ckeditor5/latest/features/link.html#custom-link-attributes-decorators
-         link: {
-            decorators: {
-               addTargetToExternalLinks: true,
-               defaultProtocol: 'https://',
-               toggleDownloadable: {
-                     mode: 'manual',
-                     label: 'Downloadable',
-                     attributes: {
-                        download: 'file'
-                     }
-               }
-            }
-         },
-         // https://ckeditor.com/docs/ckeditor5/latest/features/mentions.html#configuration
-         mention: {
-            feeds: [
-               {
-                     marker: '@',
-                     feed: [
-                        '@apple', '@bears', '@brownie', '@cake', '@cake', '@candy', '@canes', '@chocolate', '@cookie', '@cotton', '@cream',
-                        '@cupcake', '@danish', '@donut', '@dragée', '@fruitcake', '@gingerbread', '@gummi', '@ice', '@jelly-o',
-                        '@liquorice', '@macaroon', '@marzipan', '@oat', '@pie', '@plum', '@pudding', '@sesame', '@snaps', '@soufflé',
+        CKEDITOR.ClassicEditor.create(document.getElementById("Content"), {
+            toolbar: {
+                items: [
+                    'heading', '|', 'findAndReplace', 'selectAll', '|',
+                    'bold', 'italic', 'underline', 'subscript', 'superscript', 'removeFormat', '|',
+                    'bulletedList', 'numberedList', '|', 'outdent', 'indent', '|',
+                    '-',
+                    'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', 'highlight', '|',
+                    'alignment', '|',
+                    'link', 'insertImage', 'insertTable', 'mediaEmbed', '|',
+                    'horizontalLine', '|', 'sourceEditing'
+                ],
+                shouldNotGroupWhenFull: true
+            },
+            // Changing the language of the interface requires loading the language file using the <script> tag.
+            // language: 'es',
+            list: {
+                properties: {
+                    styles: true,
+                    startIndex: true,
+                    reversed: true
+                }
+            },
+            // https://ckeditor.com/docs/ckeditor5/latest/features/headings.html#configuration
+            heading: {
+                options: [{
+                        model: 'paragraph',
+                        title: 'Paragraph',
+                        class: 'ck-heading_paragraph'
+                    },
+                    {
+                        model: 'heading1',
+                        view: 'h1',
+                        title: 'Heading 1',
+                        class: 'ck-heading_heading1'
+                    },
+                    {
+                        model: 'heading2',
+                        view: 'h2',
+                        title: 'Heading 2',
+                        class: 'ck-heading_heading2'
+                    },
+                    {
+                        model: 'heading3',
+                        view: 'h3',
+                        title: 'Heading 3',
+                        class: 'ck-heading_heading3'
+                    },
+                    {
+                        model: 'heading4',
+                        view: 'h4',
+                        title: 'Heading 4',
+                        class: 'ck-heading_heading4'
+                    },
+                    {
+                        model: 'heading5',
+                        view: 'h5',
+                        title: 'Heading 5',
+                        class: 'ck-heading_heading5'
+                    },
+                    {
+                        model: 'heading6',
+                        view: 'h6',
+                        title: 'Heading 6',
+                        class: 'ck-heading_heading6'
+                    }
+                ]
+            },
+            // https://ckeditor.com/docs/ckeditor5/latest/features/editor-placeholder.html#using-the-editor-configuration
+            placeholder: 'Nội Dung Bài Viết',
+            // https://ckeditor.com/docs/ckeditor5/latest/features/font.html#configuring-the-font-family-feature
+            fontFamily: {
+                options: [
+                    'default',
+                    'Arial, Helvetica, sans-serif',
+                    'Courier New, Courier, monospace',
+                    'Georgia, serif',
+                    'Lucida Sans Unicode, Lucida Grande, sans-serif',
+                    'Tahoma, Geneva, sans-serif',
+                    'Times New Roman, Times, serif',
+                    'Trebuchet MS, Helvetica, sans-serif',
+                    'Verdana, Geneva, sans-serif'
+                ],
+                supportAllValues: true
+            },
+            // https://ckeditor.com/docs/ckeditor5/latest/features/font.html#configuring-the-font-size-feature
+            fontSize: {
+                options: [10, 12, 14, 'default', 18, 20, 22],
+                supportAllValues: true
+            },
+            // https://ckeditor.com/docs/ckeditor5/latest/features/general-html-support.html#enabling-all-html-features
+            htmlSupport: {
+                allow: [{
+                    name: /.*/,
+                    attributes: true,
+                    classes: true,
+                    styles: true
+                }]
+            },
+            // Be careful with enabling previews
+            // https://ckeditor.com/docs/ckeditor5/latest/features/html-embed.html#content-previews
+            htmlEmbed: {
+                showPreviews: true
+            },
+            // https://ckeditor.com/docs/ckeditor5/latest/features/link.html#custom-link-attributes-decorators
+            link: {
+                decorators: {
+                    addTargetToExternalLinks: true,
+                    defaultProtocol: 'https://',
+                    toggleDownloadable: {
+                        mode: 'manual',
+                        label: 'Downloadable',
+                        attributes: {
+                            download: 'file'
+                        }
+                    }
+                }
+            },
+            // https://ckeditor.com/docs/ckeditor5/latest/features/mentions.html#configuration
+            mention: {
+                feeds: [{
+                    marker: '@',
+                    feed: [
+                        '@apple', '@bears', '@brownie', '@cake', '@cake', '@candy', '@canes',
+                        '@chocolate', '@cookie', '@cotton', '@cream',
+                        '@cupcake', '@danish', '@donut', '@dragée', '@fruitcake', '@gingerbread',
+                        '@gummi', '@ice', '@jelly-o',
+                        '@liquorice', '@macaroon', '@marzipan', '@oat', '@pie', '@plum', '@pudding',
+                        '@sesame', '@snaps', '@soufflé',
                         '@sugar', '@sweet', '@topping', '@wafer'
-                     ],
-                     minimumCharacters: 1
-               }
+                    ],
+                    minimumCharacters: 1
+                }]
+            },
+            // The "super-build" contains more premium features that require additional configuration, disable them below.
+            // Do not turn them on unless you read the documentation and know how to configure them and setup the editor.
+            removePlugins: [
+                // These two are commercial, but you can try them out without registering to a trial.
+                // 'ExportPdf',
+                // 'ExportWord',
+                'CKBox',
+                'CKFinder',
+                'EasyImage',
+                // This sample uses the Base64UploadAdapter to handle image uploads as it requires no configuration.
+                // https://ckeditor.com/docs/ckeditor5/latest/features/images/image-upload/base64-upload-adapter.html
+                // Storing images as Base64 is usually a very bad idea.
+                // Replace it on production website with other solutions:
+                // https://ckeditor.com/docs/ckeditor5/latest/features/images/image-upload/image-upload.html
+                // 'Base64UploadAdapter',
+                'RealTimeCollaborativeComments',
+                'RealTimeCollaborativeTrackChanges',
+                'RealTimeCollaborativeRevisionHistory',
+                'PresenceList',
+                'Comments',
+                'TrackChanges',
+                'TrackChangesData',
+                'RevisionHistory',
+                'Pagination',
+                'WProofreader',
+                // Careful, with the Mathtype plugin CKEditor will not load when loading this sample
+                // from a local file system (file://) - load this site via HTTP server if you enable MathType
+                'MathType'
             ]
-         },
-         // The "super-build" contains more premium features that require additional configuration, disable them below.
-         // Do not turn them on unless you read the documentation and know how to configure them and setup the editor.
-         removePlugins: [
-            // These two are commercial, but you can try them out without registering to a trial.
-            // 'ExportPdf',
-            // 'ExportWord',
-            'CKBox',
-            'CKFinder',
-            'EasyImage',
-            // This sample uses the Base64UploadAdapter to handle image uploads as it requires no configuration.
-            // https://ckeditor.com/docs/ckeditor5/latest/features/images/image-upload/base64-upload-adapter.html
-            // Storing images as Base64 is usually a very bad idea.
-            // Replace it on production website with other solutions:
-            // https://ckeditor.com/docs/ckeditor5/latest/features/images/image-upload/image-upload.html
-            // 'Base64UploadAdapter',
-            'RealTimeCollaborativeComments',
-            'RealTimeCollaborativeTrackChanges',
-            'RealTimeCollaborativeRevisionHistory',
-            'PresenceList',
-            'Comments',
-            'TrackChanges',
-            'TrackChangesData',
-            'RevisionHistory',
-            'Pagination',
-            'WProofreader',
-            // Careful, with the Mathtype plugin CKEditor will not load when loading this sample
-            // from a local file system (file://) - load this site via HTTP server if you enable MathType
-            'MathType'
-         ]
-   });
-         // Be careful with the setting below. It instructs CKEditor to accept ALL HTML markup.
+        });
+        // Be careful with the setting below. It instructs CKEditor to accept ALL HTML markup.
         $(document).ready(function() {
             $('.dataTables-example').DataTable({
                 pageLength: 10,
@@ -440,38 +501,39 @@
             });
         });
         $(document).ready(function() {
-    $('.dataTables-example').DataTable({
-        pageLength: 10,
-        responsive: true,
-        dom: '<"html5buttons"B>lTfgitp',
-        buttons: [{
-                extend: 'copy'
-            },
-            {
-                extend: 'csv'
-            },
-            {
-                extend: 'excel',
-                title: 'ExampleFile'
-            },
-            {
-                extend: 'pdf',
-                title: 'ExampleFile'
-            },
-            {
-                extend: 'print',
-                customize: function(win) {
-                    $(win.document.body).addClass('white-bg');
-                    $(win.document.body).css('font-size', '10px');
-                    $(win.document.body).find('table')
-                        .addClass('compact')
-                        .css('font-size', 'inherit');
-                }
-            }
-        ]
-    });
-});
+            $('.dataTables-example').DataTable({
+                pageLength: 10,
+                responsive: true,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [{
+                        extend: 'copy'
+                    },
+                    {
+                        extend: 'csv'
+                    },
+                    {
+                        extend: 'excel',
+                        title: 'ExampleFile'
+                    },
+                    {
+                        extend: 'pdf',
+                        title: 'ExampleFile'
+                    },
+                    {
+                        extend: 'print',
+                        customize: function(win) {
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+                            $(win.document.body).find('table')
+                                .addClass('compact')
+                                .css('font-size', 'inherit');
+                        }
+                    }
+                ]
+            });
+        });
     </script>
 
 </body>
+
 </html>
